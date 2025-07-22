@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  sandbox:
+    container_name: sandbox
+    build: .
+    ports:
+      - "3000:8080"
+    env_file:
+      - .env
