@@ -7,6 +7,7 @@ import { globalIgnores } from "eslint/config";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import unusedImports from "eslint-plugin-unused-imports";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
+import checkFile from "eslint-plugin-check-file";
 
 export default tseslint.config([
   globalIgnores(["dist"]),
@@ -22,6 +23,7 @@ export default tseslint.config([
     plugins: {
       "simple-import-sort": simpleImportSort,
       "unused-imports": unusedImports,
+      "check-file": checkFile,
     },
     languageOptions: {
       ecmaVersion: 2020,
@@ -41,6 +43,19 @@ export default tseslint.config([
       "simple-import-sort/exports": "error",
       "unused-imports/no-unused-imports": "warn",
       "@typescript-eslint/no-invalid-void-type": "off",
+      // Files: Only Kebab Case with the specified exceptions (.test,.spec,.config,.d)
+      "check-file/filename-naming-convention": [
+        "error",
+        {
+          "**/*.{js,ts,jsx,tsx}":
+            "+([a-z])*([a-z0-9])*(-+([a-z0-9]))?(.(test|spec|config|d))?",
+        },
+      ],
+      // Folders: Only Kebab Case
+      "check-file/folder-naming-convention": [
+        "error",
+        { "src/**/*": "KEBAB_CASE" },
+      ],
     },
   },
   prettierRecommended,
