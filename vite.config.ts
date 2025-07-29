@@ -1,6 +1,6 @@
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { defineConfig } from "vitest/config";
+import { configDefaults, defineConfig } from "vitest/config";
 
 import { compilerOptions } from "./tsconfig.app.json";
 
@@ -28,6 +28,7 @@ export default defineConfig({
     include: ["**/*.test.tsx"],
     coverage: {
       reporter: ["text", "lcov"],
+      exclude: [...(configDefaults.coverage.exclude ?? []), "**/main.tsx"],
     },
   },
 });

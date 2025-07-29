@@ -1,12 +1,16 @@
 import "@/app.css";
 
 import reactLogo from "@assets/react.svg";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import viteLogo from "/vite.svg";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const onClick = useCallback(() => {
+    setCount((prev) => prev + 1);
+  }, []);
 
   return (
     <>
@@ -21,7 +25,7 @@ function App() {
 
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button data-testid="count" onClick={onClick}>
           count is {count}
         </button>
         <p>
