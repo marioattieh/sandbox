@@ -7,8 +7,8 @@ import { compilerOptions } from "./tsconfig.app.json";
 const getAlias = () =>
   Object.entries(compilerOptions.paths).reduce(
     (acc: Record<string, string>, [key, value]) => {
-      const newKey = key.slice(0, key.length - 2);
-      const newValue = `./${value[0].slice(0, value[0].length - 2)}`;
+      const newKey = key.replace("/*", "");
+      const newValue = `./${value[0].replace("/*", "")}`;
 
       acc[newKey] = path.resolve(__dirname, newValue);
 

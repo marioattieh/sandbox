@@ -24,8 +24,10 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@test-utils": ["src/utils/test-utils.ts"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "setup-tests.ts"]
 }
